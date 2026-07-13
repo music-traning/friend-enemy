@@ -41,6 +41,7 @@ const uiText = {
         "ui-action-plan": { "ja": "■ 業の清算", "en": "■ Clearing the Karma" },
     "ui-worst-partner": { "ja": "■ 宿業の相手 (最悪の相性)", "en": "■ The Karmic Nemesis" },
     "ui-defense": { "ja": "■ 対フレネミー防衛術", "en": "■ Defense Strategy" },
+    "ui-salvation": { "ja": "■ 業からの解脱 (救済策)", "en": "■ Liberation from Karma" },
     "btn-share-x": { "ja": "結果をXに刻む", "en": "Engrave on X" },
     "btn-home": { "ja": "深淵から戻る", "en": "Return from the Abyss" },
     "ui-help-title": { "ja": "業の目録", "en": "The Codex" },
@@ -157,10 +158,11 @@ function renderQuiz() {
 }
 
 function renderResult() {
-    // 描画は displayResultScreen 内で行うためここではボタン等の更新のみ
-        document.getElementById('ui-action-plan').innerText = uiText["ui-action-plan"][appState.lang];
+    // 1. 固定ラベルの更新
+    document.getElementById('ui-action-plan').innerText = uiText["ui-action-plan"][appState.lang];
     document.getElementById('ui-worst-partner').innerText = uiText["ui-worst-partner"][appState.lang];
     document.getElementById('ui-defense').innerText = uiText["ui-defense"][appState.lang];
+    document.getElementById('ui-salvation').innerText = uiText["ui-salvation"][appState.lang];
     document.getElementById('btn-share-x').innerText = uiText["btn-share-x"][appState.lang];
     document.getElementById('btn-home').innerText = uiText["btn-home"][appState.lang];
     
@@ -168,6 +170,48 @@ function renderResult() {
     document.getElementById('label-axis2').innerText = uiText["label-axis2"][appState.lang];
     document.getElementById('label-axis3').innerText = uiText["label-axis3"][appState.lang];
     document.getElementById('label-axis4').innerText = uiText["label-axis4"][appState.lang];
+
+    // 2. 【バグ修正】動的テキスト（診断結果）の言語切り替え再描画
+    if (appState.activeType) {
+        const typeStr = appState.activeType;
+        const resultData = window.heroData.types[typeStr] || window.heroData.types[Object.keys(window.heroData.types)[0]];
+        const titleStr = resultData.title[appState.lang];
+
+        document.getElementById('result-type').innerText = `TYPE: ${typeStr}`;
+        document.getElementById('result-title').innerText = titleStr;
+        document.getElementById('result-profile').innerText = resultData.profile[appState.lang];
+        document.getElementById('result-action').innerText = resultData.action_plan[appState.lang];
+        
+        // 宿業の相手と防衛術の描画
+        const worstPartnerType = resultData.worst_partner;
+        const worstPartnerData = window.heroData.types[worstPartnerType];
+        const worstPartnerTitle = worstPartnerData.title[appState.lang];
+        document.getElementById('result-worst-partner').innerHTML = `<strong style="color:var(--text-color);">[${worstPartnerType}] ${worstPartnerTitle}</strong><br>${resultData.partner_reason[appState.lang]}`;
+        document.getElementById('result-defense').innerText = resultData.defense[appState.lang];
+        
+        // 救済策の描画
+        document.getElementById('result-salvation').innerText = resultData.salvation[appState.lang];
+        
+        // プログレスバーの更新
+        ['Axis1', 'Axis2', 'Axis3', 'Axis4'].forEach(axis => {
+            const bar = document.getElementById(`bar-${axis.toLowerCase()}`);
+            if (bar && appState.activePercentages[axis]) {
+                bar.style.width = `${appState.activePercentages[axis]}%`;
+            }
+        });
+
+        // シェアテキストの再生成
+        const text = appState.lang === 'ja'
+            ? `潜在フレネミー診断：私の中に眠る『業』の正体は
+【 ${typeStr} : ${titleStr} 】でした。
+
+`
+            : `Hidden Frenemy Assessment: My true 'Karma' is
+[ ${typeStr} : ${titleStr} ].
+
+`;
+        appState.shareText = text;
+    }
 }
 
 function renderHelp() {
@@ -270,39 +314,12 @@ window.loadResultFromHistory = (index) => {
 };
 
 function displayResultScreen(typeStr, percentages) {
-    const resultData = window.heroData.types[typeStr] || window.heroData.types[Object.keys(window.heroData.types)[0]];
-    const titleStr = resultData.title[appState.lang];
+    // 【バグ修正】言語切り替え用に現在アクティブな結果をStateに保持
+    appState.activeType = typeStr;
+    appState.activePercentages = percentages;
     
-    const text = appState.lang === 'ja'
-        ? `潜在フレネミー診断：私の中に眠る『業』の正体は
-【 ${typeStr} : ${titleStr} 】でした。
-
-`
-        : `Hidden Frenemy Assessment: My true 'Karma' is
-[ ${typeStr} : ${titleStr} ].
-
-`;
-
-    document.getElementById('result-type').innerText = `TYPE: ${typeStr}`;
-    document.getElementById('result-title').innerText = titleStr;
-    document.getElementById('result-profile').innerText = resultData.profile[appState.lang];
-        document.getElementById('result-action').innerText = resultData.action_plan[appState.lang];
-    
-    // 宿業の相手と防衛術の描画
-    const worstPartnerType = resultData.worst_partner;
-    const worstPartnerData = window.heroData.types[worstPartnerType];
-    const worstPartnerTitle = worstPartnerData.title[appState.lang];
-    document.getElementById('result-worst-partner').innerHTML = `<strong style="color:var(--text-color);">[${worstPartnerType}] ${worstPartnerTitle}</strong><br>${resultData.partner_reason[appState.lang]}`;
-    document.getElementById('result-defense').innerText = resultData.defense[appState.lang];
-    
-    // プログレスバーの更新 (Axis1〜Axis4)
-    ['Axis1', 'Axis2', 'Axis3', 'Axis4'].forEach(axis => {
-        const bar = document.getElementById(`bar-${axis.toLowerCase()}`);
-        if(bar && percentages[axis]) bar.style.width = `${percentages[axis]}%`;
-    });
-
-    renderResult(); // ボタンなどの言語更新
-    setState({ screen: 'result', shareText: text });
+    renderResult(); // UIとテキストの描画を全て renderResult に委ねる
+    setState({ screen: 'result' });
 }
 
 window.clearHistory = () => {
@@ -313,7 +330,7 @@ window.clearHistory = () => {
 };
 
 window.shareOnX = () => {
-    const url = "https://friend-enemy.vercel.app/"; // デプロイ先のURLに変更してください
+    const url = "https://https://friend-enemy.vercel.app/"; // デプロイ先のURLに変更してください
     const hashtags = appState.lang === 'ja' ? "潜在フレネミー診断,TheHiddenKarma" : "HiddenFrenemy,TheHiddenKarma";
     const intentUrl = `https://twitter.com/intent/tweet?text=${encodeURIComponent(appState.shareText)}&url=${encodeURIComponent(url)}&hashtags=${hashtags}`;
     window.open(intentUrl, '_blank', 'noopener,noreferrer');

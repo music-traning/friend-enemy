@@ -49,6 +49,10 @@ const frenemyData = {
       "defense": {
           "ja": "彼らの過剰な称賛は罠です。「ありがとう、でも自分でやるよ」と物理的・精神的な距離を強制的に空け、執着を断ち切ってください。",
           "en": "Their excessive praise is a trap. Forcefully create distance by saying, 'Thanks, but I'll handle it,' to sever their attachment."
+      },
+      "salvation": {
+          "ja": "嫉妬を隠して褒めるのをやめましょう。他者の成功に対する悔しさを自ら認め、素直に「悔しい」と口に出すことが、最初の解脱です。",
+          "en": "Stop hiding jealousy behind praise. Admitting your frustration over others' success and honestly saying 'I'm jealous' is the first step to liberation."
       }
     },
     "OIJT": {
@@ -63,6 +67,10 @@ const frenemyData = {
       "defense": {
           "ja": "反論せず「あなたの意見は分かりました。でも決めるのは私です」と、彼らの支配（演出）から明確に降りる宣言が有効です。",
           "en": "Do not argue. Simply state, 'I understand your opinion, but I make the decisions,' clearly stepping off their stage."
+      },
+      "salvation": {
+          "ja": "他人の人生の脚本を書くのをやめること。相手が失敗する権利を尊重し、ただ見守る忍耐を身につければ、あなたの孤独は癒え始めます。",
+          "en": "Stop writing scripts for other people's lives. Respect their right to fail and learn the patience to just watch; your loneliness will begin to heal."
       }
     },
     "OIVP": {
@@ -77,6 +85,10 @@ const frenemyData = {
       "defense": {
           "ja": "彼らは「すごいですね！」と近づいてきます。謙遜せず、かつ彼らに役割を与えず、完全にビジネスライクに接して養分を絶ちましょう。",
           "en": "They approach with excessive praise. Do not be humble, give them no roles, and maintain a strictly business-like attitude to cut off their nutrients."
+      },
+      "salvation": {
+          "ja": "「誰を知っているか」で自分を語るのをやめ、泥臭くても「自分が何を成し遂げたか」だけを誇るようにすれば、本当の自信が育ちます。",
+          "en": "Stop defining yourself by 'who you know'. If you only take pride in 'what you have accomplished', however gritty, true confidence will grow."
       }
     },
     "OIVT": {
@@ -91,6 +103,10 @@ const frenemyData = {
       "defense": {
           "ja": "彼らの毒舌に感情的に反応したら負けです。「そういう意見もあるのですね」と暖簾に腕押しの対応を徹底し、観客にならないこと。",
           "en": "Reacting emotionally to their toxicity is a loss. Consistently respond with indifference like, 'That's one way to look at it,' and refuse to be their audience."
+      },
+      "salvation": {
+          "ja": "まずは自分の弱さや失敗を、一つだけ他人に開示してみてください。無防備なあなたを嗤わずに受け入れてくれる人が、本当の味方です。",
+          "en": "Try revealing just one of your weaknesses or failures to others. The people who accept your vulnerability without mocking you are your true allies."
       }
     },
     "ODJP": {
@@ -105,6 +121,10 @@ const frenemyData = {
       "defense": {
           "ja": "遠くから見ているだけなので直接の害は少ないですが、一度でも隙を見せると噛みつかれます。公私の境界線を絶対に越えさせないように。",
           "en": "Since they only watch from afar, actual harm is low, but they will bite if you show weakness. Never let them cross the boundary between public and private."
+      },
+      "salvation": {
+          "ja": "他人の動向を監視するSNSアカウントからログアウトしてください。物理的に他者の光を遮断し、自分の手元だけを見る時間が必要です。",
+          "en": "Log out of the SNS accounts you use to monitor others. You need time to physically block out others' light and look only at what's in your own hands."
       }
     },
     "ODJT": {
@@ -119,6 +139,10 @@ const frenemyData = {
       "defense": {
           "ja": "こちらが調子に乗った瞬間を狙っています。彼らの前では自慢話や成功体験を意図的に伏せ、スコープから外れるのが最善です。",
           "en": "They aim for the moment you get carried away. Hide your success stories in front of them to stay completely out of their sniper scope."
+      },
+      "salvation": {
+          "ja": "他人の隙を突く冷徹な分析力を、自分自身の課題解決に向けてください。誰かを撃ち落とすのではなく、自分が這い上がるために頭脳を使うのです。",
+          "en": "Direct your cold analytical power to solve your own problems. Use your brain to climb up yourself, rather than shooting someone else down."
       }
     },
     "ODVP": {
@@ -133,6 +157,10 @@ const frenemyData = {
       "defense": {
           "ja": "メリットがないと分かれば勝手に去っていきます。彼らが近づいてきたら、あえて「面倒な頼み事」をすると瞬時に消滅します。",
           "en": "They will leave on their own if they see no benefit. When they approach, purposely make a 'troublesome request' and they will vanish instantly."
+      },
+      "salvation": {
+          "ja": "何のメリットもない、ただ無駄話をするだけの相手を一人見つけてください。利害関係のない繋がりが、あなたの人間らしさを取り戻させます。",
+          "en": "Find just one person to have pointless conversations with, where there is no benefit. A connection without self-interest will restore your humanity."
       }
     },
     "ODVT": {
@@ -147,6 +175,10 @@ const frenemyData = {
       "defense": {
           "ja": "彼らはあなたをモルモットとして見ています。彼らの冷笑的な分析には一切同意せず、ただ沈黙で返すのが最も効果的な防御です。",
           "en": "They view you as a lab rat. Never agree with their cynical analysis; responding with pure silence is the most effective defense."
+      },
+      "salvation": {
+          "ja": "冷笑をやめ、一度だけ全力で何かに挑んで「ダサく敗北」してみてください。汗と泥にまみれた感情を知った時、世界は少しだけ温かく見えます。",
+          "en": "Stop sneering, give your all to something just once, and experience an 'uncool defeat'. When you know the feeling of sweat and mud, the world will look a bit warmer."
       }
     },
     "CIJP": {
@@ -161,6 +193,10 @@ const frenemyData = {
       "defense": {
           "ja": "あなたに依存するふりをして操ろうとします。「あなたはどうしたいの？」と常に主語を相手に返し、責任を負わせてください。",
           "en": "They pretend to depend on you to manipulate you. Always turn the subject back by asking, 'What do YOU want to do?' and force them to take responsibility."
+      },
+      "salvation": {
+          "ja": "自分の意見を言う時、「あなたのために」という前置きを捨てること。「私はこうしたい」と主語を自分に戻す勇気が、糸を断ち切る剣となります。",
+          "en": "When voicing an opinion, drop the 'for your sake' preface. The courage to use 'I want' as the subject is the sword that cuts the strings."
       }
     },
     "CIJT": {
@@ -175,6 +211,10 @@ const frenemyData = {
       "defense": {
           "ja": "裏で噂を流すのが得意です。情報源を特定し、公の場で「あの件、あなたが言っていたと聞いたけど？」と光を当てて無効化しましょう。",
           "en": "They excel at spreading rumors. Identify the source and confront them publicly with, 'I heard you were saying this,' exposing them to the light."
+      },
+      "salvation": {
+          "ja": "水面下で集めた不満を、一度だけ相手の目を見て直接伝えてみてください。陰口ではなく「対話」をすることでしか、現状は変えられません。",
+          "en": "Look them in the eye just once and express the grievances you've gathered covertly. Only through 'dialogue', not gossip, can you change your reality."
       }
     },
     "CIVP": {
@@ -189,6 +229,10 @@ const frenemyData = {
       "defense": {
           "ja": "あなたに尽くすことで実権を握ろうとします。彼らの「善意」を安易に受け取らず、貸し借りを作らない関係を徹底してください。",
           "en": "They try to seize control by serving you. Never easily accept their 'goodwill,' and maintain a relationship with absolutely no owed favors."
+      },
+      "salvation": {
+          "ja": "誰かの役に立つことで自分の価値を証明しようとするのをやめること。あなたが何も提供しなくても、そばにいてくれる人を探してください。",
+          "en": "Stop trying to prove your worth by being useful to someone. Find people who will stay by your side even if you provide absolutely nothing."
       }
     },
     "CIVT": {
@@ -203,6 +247,10 @@ const frenemyData = {
       "defense": {
           "ja": "プライベートを探りながら陰で嘲笑います。個人的な悩みや弱点は絶対に彼らに開示せず、表面的な話題のみでやり過ごすこと。",
           "en": "They probe your private life while mocking you in the shadows. Never disclose personal vulnerabilities; survive by discussing only superficial topics."
+      },
+      "salvation": {
+          "ja": "裏で人を操作して得た結果は、あなたに虚無しか残しません。コントロールできない不確実な出来事に身を委ねる恐怖を受け入れてください。",
+          "en": "Results gained by manipulating people covertly leave you with nothing but emptiness. Accept the fear of surrendering to uncontrollable uncertainties."
       }
     },
     "CDJP": {
@@ -217,6 +265,10 @@ const frenemyData = {
       "defense": {
           "ja": "直接的な攻撃力はありません。彼らの妬みの視線を感じても、完全に「背景のノイズ」として無視し、自分の道を進むだけで自滅します。",
           "en": "They have no direct attack power. Even if you feel their jealous gaze, completely ignore it as 'background noise'; they will self-destruct as you move forward."
+      },
+      "salvation": {
+          "ja": "受動的な呪いを解くには、能動的な行動しかありません。どんなに小さなことでも良いので、今日から「自分が主役になれる趣味」を始めてください。",
+          "en": "The only way to break a passive curse is active behavior. Starting today, pick up a hobby—no matter how small—where you can be the protagonist."
       }
     },
     "CDJT": {
@@ -231,6 +283,10 @@ const frenemyData = {
       "defense": {
           "ja": "噂話に巻き込もうとしてきます。「へえ、そうなんですか。私は興味ないですが」と、彼らの流す毒を完全にシャットアウトしてください。",
           "en": "They will try to drag you into rumors. Completely shut out their poison by stating, 'Oh really? Well, I'm not interested.'"
+      },
+      "salvation": {
+          "ja": "安全圏から石を投げるのをやめ、実名で（あるいは自分の責任で）意見を発信する場所を持ちましょう。傷つく覚悟が、あなたを呪縛から解放します。",
+          "en": "Stop throwing stones from a safe zone. Establish a place to voice your opinions under your real name (or taking full responsibility). The readiness to be hurt will free you."
       }
     },
     "CDVP": {
@@ -245,6 +301,10 @@ const frenemyData = {
       "defense": {
           "ja": "機械的にあなたを持ち上げて利用します。彼らの称賛には「ありがとう」とだけ返し、見返りやフォローアップの期待は一切捨てること。",
           "en": "They mechanically praise to use you. Reply only with 'Thank you' to their praise, and completely abandon any expectation of genuine support."
+      },
+      "salvation": {
+          "ja": "「ありがとう」と言われた時、システム的な返答ではなく、一度だけ心から「どういたしまして」と笑ってみてください。感情は筋肉と同じで、使えば蘇ります。",
+          "en": "When someone says 'thank you', try smiling and saying 'you're welcome' from the bottom of your heart just once, instead of a systematic reply. Emotions are like muscles; they revive if you use them."
       }
     },
     "CDVT": {
@@ -259,6 +319,10 @@ const frenemyData = {
       "defense": {
           "ja": "関わるだけ無駄です。彼らの冷ややかな態度は彼ら自身の問題であり、あなたの責任ではありません。物理的・精神的に完全に関係を断つこと。",
           "en": "Getting involved is a waste of time. Their cold attitude is their own problem, not yours. Sever ties completely, both physically and mentally."
+      },
+      "salvation": {
+          "ja": "孤独な牢獄から出るには、他者に「助けてほしい」と一言だけ伝えることです。冷笑を捨てて他者に頼る恐怖を乗り越えた時、本当の自由を得ます。",
+          "en": "To escape your solitary prison, just tell someone, 'I need your help.' You will gain true freedom when you drop the cynicism and overcome the fear of relying on others."
       }
     }
   }
