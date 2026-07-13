@@ -289,7 +289,7 @@ window.clearHistory = () => {
 };
 
 window.shareOnX = () => {
-    const url = "https://your-domain.vercel.app/"; // デプロイ先のURLに変更してください
+    const url = "https://friend-enemy.vercel.app/"; // ★ここを変更
     const hashtags = appState.lang === 'ja' ? "潜在フレネミー診断,TheHiddenKarma" : "HiddenFrenemy,TheHiddenKarma";
     const intentUrl = `https://twitter.com/intent/tweet?text=${encodeURIComponent(appState.shareText)}&url=${encodeURIComponent(url)}&hashtags=${hashtags}`;
     window.open(intentUrl, '_blank', 'noopener,noreferrer');
