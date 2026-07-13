@@ -5,18 +5,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>潜在フレネミー診断 | The Hidden Karma</title>
 
-    <!-- 👇 ここにVercel Analyticsのスクリプトを追加 -->
-    <script defer src="/_vercel/insights/script.js"></script>
-
     <meta name="theme-color" content="#1a1a1a">
     <meta property="og:title" content="潜在フレネミー診断 | The Hidden Karma">
     <meta property="og:description" content="あなたの中に眠る対人関係の『業』を可視化する。">
-    
-    <!-- 👇 OGPのURLを今回決定したものに更新 -->
-    <meta property="og:url" content="https://friend-enemy.vercel.app/">
-    <!-- 画像（og-image.png）を用意する場合は以下も追加するとSNSで目立ちます -->
-    <meta property="og:image" content="https://friend-enemy.vercel.app/og-image.png">
-
     <meta name="twitter:card" content="summary_large_image">
 
     <style>
@@ -209,6 +200,12 @@
         <div style="border:1px solid #330000; padding: 16px; margin-top: 20px; background-color: #1a0505;">
             <strong id="ui-action-plan" style="color: var(--accent-color); font-size: 13px; display: block; margin-bottom: 8px;"></strong>
             <span id="result-action" style="font-size: 14px; line-height: 1.8; color: #bbbbbb;"></span>
+            
+            <strong id="ui-worst-partner" style="color: var(--accent-color); font-size: 13px; display: block; margin-top: 24px; margin-bottom: 8px;"></strong>
+            <span id="result-worst-partner" style="font-size: 14px; line-height: 1.8; color: #bbbbbb; display: block;"></span>
+            
+            <strong id="ui-defense" style="color: var(--accent-color); font-size: 13px; display: block; margin-top: 24px; margin-bottom: 8px;"></strong>
+            <span id="result-defense" style="font-size: 14px; line-height: 1.8; color: #bbbbbb; display: block;"></span>
         </div>
         
         <button class="btn" onclick="shareOnX()" style="margin-top: 30px; background-color: #000000; color: #ffffff; border-color: #333333;" id="btn-share-x"></button>

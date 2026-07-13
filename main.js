@@ -38,7 +38,9 @@ const uiText = {
     "label-axis2": { "ja": "干渉・ドライ", "en": "Invasive / Detached" },
     "label-axis3": { "ja": "嫉妬・虚栄", "en": "Jealousy / Vanity" },
     "label-axis4": { "ja": "称賛・毒舌", "en": "Praising / Toxic" },
-    "ui-action-plan": { "ja": "■ 業の清算", "en": "■ Clearing the Karma" },
+        "ui-action-plan": { "ja": "■ 業の清算", "en": "■ Clearing the Karma" },
+    "ui-worst-partner": { "ja": "■ 宿業の相手 (最悪の相性)", "en": "■ The Karmic Nemesis" },
+    "ui-defense": { "ja": "■ 対フレネミー防衛術", "en": "■ Defense Strategy" },
     "btn-share-x": { "ja": "結果をXに刻む", "en": "Engrave on X" },
     "btn-home": { "ja": "深淵から戻る", "en": "Return from the Abyss" },
     "ui-help-title": { "ja": "業の目録", "en": "The Codex" },
@@ -156,7 +158,9 @@ function renderQuiz() {
 
 function renderResult() {
     // 描画は displayResultScreen 内で行うためここではボタン等の更新のみ
-    document.getElementById('ui-action-plan').innerText = uiText["ui-action-plan"][appState.lang];
+        document.getElementById('ui-action-plan').innerText = uiText["ui-action-plan"][appState.lang];
+    document.getElementById('ui-worst-partner').innerText = uiText["ui-worst-partner"][appState.lang];
+    document.getElementById('ui-defense').innerText = uiText["ui-defense"][appState.lang];
     document.getElementById('btn-share-x').innerText = uiText["btn-share-x"][appState.lang];
     document.getElementById('btn-home').innerText = uiText["btn-home"][appState.lang];
     
@@ -282,7 +286,14 @@ function displayResultScreen(typeStr, percentages) {
     document.getElementById('result-type').innerText = `TYPE: ${typeStr}`;
     document.getElementById('result-title').innerText = titleStr;
     document.getElementById('result-profile').innerText = resultData.profile[appState.lang];
-    document.getElementById('result-action').innerText = resultData.action_plan[appState.lang];
+        document.getElementById('result-action').innerText = resultData.action_plan[appState.lang];
+    
+    // 宿業の相手と防衛術の描画
+    const worstPartnerType = resultData.worst_partner;
+    const worstPartnerData = window.heroData.types[worstPartnerType];
+    const worstPartnerTitle = worstPartnerData.title[appState.lang];
+    document.getElementById('result-worst-partner').innerHTML = `<strong style="color:var(--text-color);">[${worstPartnerType}] ${worstPartnerTitle}</strong><br>${resultData.partner_reason[appState.lang]}`;
+    document.getElementById('result-defense').innerText = resultData.defense[appState.lang];
     
     // プログレスバーの更新 (Axis1〜Axis4)
     ['Axis1', 'Axis2', 'Axis3', 'Axis4'].forEach(axis => {
@@ -302,7 +313,7 @@ window.clearHistory = () => {
 };
 
 window.shareOnX = () => {
-    const url = "https://your-domain.vercel.app/"; // デプロイ先のURLに変更してください
+    const url = "https://friend-enemy.vercel.app/"; // デプロイ先のURLに変更してください
     const hashtags = appState.lang === 'ja' ? "潜在フレネミー診断,TheHiddenKarma" : "HiddenFrenemy,TheHiddenKarma";
     const intentUrl = `https://twitter.com/intent/tweet?text=${encodeURIComponent(appState.shareText)}&url=${encodeURIComponent(url)}&hashtags=${hashtags}`;
     window.open(intentUrl, '_blank', 'noopener,noreferrer');
