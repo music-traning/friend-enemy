@@ -102,7 +102,7 @@ function renderHistory() {
         div.onclick = () => loadResultFromHistory(index);
         
         // 履歴保存時の言語ではなく、現在の言語設定でタイトルを取得し直す
-        const typeData = window.heroData.types[item.type];
+        const typeData = window.frenemyData.types[item.type];
         const displayTitle = typeData ? typeData.title[appState.lang] : item.title;
 
         div.innerHTML = `
@@ -134,7 +134,7 @@ function renderQuiz() {
     const optionsContainer = document.getElementById('quiz-options');
     optionsContainer.innerHTML = '';
     
-    window.heroData.app_config.scale.forEach(scale => {
+    window.frenemyData.app_config.scale.forEach(scale => {
         const btn = document.createElement('button');
         btn.className = 'option-btn';
         if (appState.answers[q.id] === scale.value) btn.classList.add('selected');
@@ -174,7 +174,7 @@ function renderResult() {
     // 2. 【バグ修正】動的テキスト（診断結果）の言語切り替え再描画
     if (appState.activeType) {
         const typeStr = appState.activeType;
-        const resultData = window.heroData.types[typeStr] || window.heroData.types[Object.keys(window.heroData.types)[0]];
+        const resultData = window.frenemyData.types[typeStr] || window.frenemyData.types[Object.keys(window.frenemyData.types)[0]];
         const titleStr = resultData.title[appState.lang];
 
         document.getElementById('result-type').innerText = `TYPE: ${typeStr}`;
@@ -184,7 +184,7 @@ function renderResult() {
         
         // 宿業の相手と防衛術の描画
         const worstPartnerType = resultData.worst_partner;
-        const worstPartnerData = window.heroData.types[worstPartnerType];
+        const worstPartnerData = window.frenemyData.types[worstPartnerType];
         const worstPartnerTitle = worstPartnerData.title[appState.lang];
         document.getElementById('result-worst-partner').innerHTML = `<strong style="color:var(--text-color);">[${worstPartnerType}] ${worstPartnerTitle}</strong><br>${resultData.partner_reason[appState.lang]}`;
         document.getElementById('result-defense').innerText = resultData.defense[appState.lang];
@@ -195,7 +195,7 @@ function renderResult() {
         // プログレスバーの更新
         ['Axis1', 'Axis2', 'Axis3', 'Axis4'].forEach(axis => {
             const bar = document.getElementById(`bar-${axis.toLowerCase()}`);
-            if (bar && appState.activePercentages[axis]) {
+            if (bar && appState.activePercentages[axis] != null) {
                 bar.style.width = `${appState.activePercentages[axis]}%`;
             }
         });
@@ -222,7 +222,7 @@ function renderHelp() {
     const helpList = document.getElementById('help-list');
     helpList.innerHTML = '';
 
-    for (const [key, data] of Object.entries(window.heroData.types)) {
+    for (const [key, data] of Object.entries(window.frenemyData.types)) {
         const div = document.createElement('div');
         div.style.borderBottom = "1px dotted var(--border-color)"; 
         div.style.paddingBottom = "16px"; 
@@ -259,7 +259,7 @@ function shuffleArray(array) {
 
 window.startQuiz = () => {
     // 設問をシャッフルして出題の規則性を消す
-    const shuffledQuestions = shuffleArray(window.heroData.questions);
+    const shuffledQuestions = shuffleArray(window.frenemyData.questions);
     
     setState({
         screen: 'quiz',
@@ -293,7 +293,7 @@ window.nextQuestion = () => {
 
 function calculateAndSaveResult() {
     const { typeStr, percentages } = calculateScore(appState.questions, appState.answers);
-    const resultData = window.heroData.types[typeStr] || window.heroData.types[Object.keys(window.heroData.types)[0]];
+    const resultData = window.frenemyData.types[typeStr] || window.frenemyData.types[Object.keys(window.frenemyData.types)[0]];
     
     // 履歴保存用にデフォルト言語のタイトルを保持しておく（描画時に言語に合わせて差し替える）
     const titleStr = resultData.title['ja']; 
@@ -330,7 +330,7 @@ window.clearHistory = () => {
 };
 
 window.shareOnX = () => {
-    const url = "https://https://friend-enemy.vercel.app/"; // デプロイ先のURLに変更してください
+    const url = "https://friend-enemy.vercel.app/";
     const hashtags = appState.lang === 'ja' ? "潜在フレネミー診断,TheHiddenKarma" : "HiddenFrenemy,TheHiddenKarma";
     const intentUrl = `https://twitter.com/intent/tweet?text=${encodeURIComponent(appState.shareText)}&url=${encodeURIComponent(url)}&hashtags=${hashtags}`;
     window.open(intentUrl, '_blank', 'noopener,noreferrer');

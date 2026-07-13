@@ -328,4 +328,4 @@ const frenemyData = {
   }
 };
 
-window.heroData = frenemyData;
+window.frenemyData = frenemyData;
