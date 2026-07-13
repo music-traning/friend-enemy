@@ -199,10 +199,23 @@ window.abortQuiz = () => {
     }
 };
 
+// 配列をシャッフルする関数（フィッシャー・イェーツのアルゴリズム）
+function shuffleArray(array) {
+    const newArr = [...array];
+    for (let i = newArr.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [newArr[i], newArr[j]] = [newArr[j], newArr[i]];
+    }
+    return newArr;
+}
+
 window.startQuiz = () => {
+    // 設問をシャッフルして出題の規則性を消す
+    const shuffledQuestions = shuffleArray(window.heroData.questions);
+    
     setState({
         screen: 'quiz',
-        questions: window.heroData.questions,
+        questions: shuffledQuestions,
         currentIdx: 0,
         answers: {}
     });
@@ -289,7 +302,7 @@ window.clearHistory = () => {
 };
 
 window.shareOnX = () => {
-    const url = "https://friend-enemy.vercel.app/"; // ★ここを変更
+    const url = "https://your-domain.vercel.app/"; // デプロイ先のURLに変更してください
     const hashtags = appState.lang === 'ja' ? "潜在フレネミー診断,TheHiddenKarma" : "HiddenFrenemy,TheHiddenKarma";
     const intentUrl = `https://twitter.com/intent/tweet?text=${encodeURIComponent(appState.shareText)}&url=${encodeURIComponent(url)}&hashtags=${hashtags}`;
     window.open(intentUrl, '_blank', 'noopener,noreferrer');
