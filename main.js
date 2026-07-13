@@ -38,7 +38,11 @@ const uiText = {
     "label-axis2": { "ja": "干渉・ドライ", "en": "Invasive / Detached" },
     "label-axis3": { "ja": "嫉妬・虚栄", "en": "Jealousy / Vanity" },
     "label-axis4": { "ja": "称賛・毒舌", "en": "Praising / Toxic" },
-        "ui-action-plan": { "ja": "■ 業の清算", "en": "■ Clearing the Karma" },
+            "ui-action-plan": { "ja": "■ 業の清算", "en": "■ Clearing the Karma" },
+    "ui-stats-title": { "ja": "■ 潜在脅威パラメータ", "en": "■ Threat Parameters" },
+    "label-danger": { "ja": "フレネミー危険度", "en": "Danger Level" },
+    "label-betrayal": { "ja": "裏切り確率", "en": "Betrayal Prob." },
+    "label-darkness": { "ja": "心の闇レベル", "en": "Darkness Lvl." },
     "ui-worst-partner": { "ja": "■ 宿業の相手 (最悪の相性)", "en": "■ The Karmic Nemesis" },
     "ui-defense": { "ja": "■ 対フレネミー防衛術", "en": "■ Defense Strategy" },
     "ui-salvation": { "ja": "■ 業からの解脱 (救済策)", "en": "■ Liberation from Karma" },
@@ -169,7 +173,12 @@ function renderResult() {
     document.getElementById('label-axis1').innerText = uiText["label-axis1"][appState.lang];
     document.getElementById('label-axis2').innerText = uiText["label-axis2"][appState.lang];
     document.getElementById('label-axis3').innerText = uiText["label-axis3"][appState.lang];
-    document.getElementById('label-axis4').innerText = uiText["label-axis4"][appState.lang];
+        document.getElementById('label-axis4').innerText = uiText["label-axis4"][appState.lang];
+    
+    document.getElementById('ui-stats-title').innerText = uiText["ui-stats-title"][appState.lang];
+    document.getElementById('label-danger').innerText = uiText["label-danger"][appState.lang];
+    document.getElementById('label-betrayal').innerText = uiText["label-betrayal"][appState.lang];
+    document.getElementById('label-darkness').innerText = uiText["label-darkness"][appState.lang];
 
     // 2. 【バグ修正】動的テキスト（診断結果）の言語切り替え再描画
     if (appState.activeType) {
@@ -199,6 +208,13 @@ function renderResult() {
                 bar.style.width = `${appState.activePercentages[axis]}%`;
             }
         });
+        
+        // 潜在脅威パラメータの更新
+        document.getElementById('val-danger').innerText = resultData.danger_tier[appState.lang];
+        document.getElementById('val-betrayal').innerText = resultData.betrayal_prob + "%";
+        document.getElementById('bar-betrayal').style.width = resultData.betrayal_prob + "%";
+        document.getElementById('val-darkness').innerText = resultData.darkness_level;
+        document.getElementById('bar-darkness').style.width = resultData.darkness_level + "%";
 
         // シェアテキストの再生成
         const text = appState.lang === 'ja'
